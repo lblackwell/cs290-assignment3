@@ -13,7 +13,10 @@
 */
 
 //your code here
-
+function uselessFunction()
+{
+	return null;
+}
 //end your code
 
 var bar = 'not a function';
@@ -30,7 +33,21 @@ var barType = typeof bar;
 */
 
 //your code here
-
+bar = function(doubleArray)
+{
+	for(var i = 0; i < doubleArray.length; i++)
+	{
+		if(isNaN(doubleArray[i]))
+		{
+			return false;
+		}
+		else
+		{
+			doubleArray[i] = (doubleArray[i] * 2);
+		}
+	}
+	return true;
+}
 //end your code
 
 /**
@@ -66,5 +83,57 @@ function GitLog(hash, date, message) {
 */
 
 //your code here
+function parseGit(logArray)
+{
+	// var gitLogArray = new Array(50);
 
+	for(var i = 0; var < logArray.length; i++) // Access each commit message
+	{
+		var hashString = "";
+		var dateString = "";
+		var messageString = "";
+		var hashDone = false;
+		var dateDone = false;
+
+		// Access each character in this commit message
+		for(var j = 0; j < logArray[i].length - 1; i++)
+		{
+			// Add characters to hash until space is reached
+			if(hashDone == false && logArray[i].charAt(j) != " ")
+			{
+				hashString += logArray[i].charAt(j);
+			}
+
+			// First space is reached
+			if(hashDone == false && logArray[i].charAt(j) == " ")
+			{
+				hashDone = true;
+			}
+
+			// Add characters to date string until " reached
+			if(hashDone == true && dateDone == false && logArray[i].charAt(j) != "\"")
+			{
+				dateString += logArray[i].charAt(j);
+			}
+
+			// " reached
+			if(hashDone == true && dateDone == false && logArray[i].charAt(j) == "\"")
+			{
+				dateDone = true;
+			}
+
+			// Add all but the last character (") to message string
+			if(hashDone == true && dateDone == true)
+			{
+				messageString += logArray[i].charAt(j);
+			}
+
+			// Test print
+			alert('Hash: ' + hashString + ", date: " + dateString + ", message: " + messageString);
+		}
+	}
+
+	// return gitLogArray;
+	return 0;
+}
 //end your code
