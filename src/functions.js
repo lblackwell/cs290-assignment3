@@ -85,6 +85,7 @@ function GitLog(hash, date, message) {
 //your code here
 function parseGit(logArray)
 {
+<<<<<<< HEAD
 	var gitLogArray = new Array(50);
 
 	for(var i = 0; i < logArray.length; i++) // Access each commit message
@@ -104,6 +105,27 @@ function parseGit(logArray)
 				hashString += logArray[i].charAt(j);
 			}
 
+=======
+	// var gitLogArray = new Array(50);
+
+	for(var i = 0; var < logArray.length; i++) // Access each commit message
+	{
+		var hashString = "";
+		var dateString = "";
+		var messageString = "";
+		var hashDone = false;
+		var dateDone = false;
+
+		// Access each character in this commit message
+		for(var j = 0; j < logArray[i].length - 1; i++)
+		{
+			// Add characters to hash until space is reached
+			if(hashDone == false && logArray[i].charAt(j) != " ")
+			{
+				hashString += logArray[i].charAt(j);
+			}
+
+>>>>>>> 71a21319fe61c028dd6919b4ac35a65f4f6cac24
 			// First space is reached
 			if(hashDone == false && logArray[i].charAt(j) == " ")
 			{
@@ -129,6 +151,7 @@ function parseGit(logArray)
 			}
 
 			// Test print
+<<<<<<< HEAD
 			// alert('Hash: ' + hashString + ", date: " + dateString + ", message: " + messageString);
 		}
 	}
@@ -136,3 +159,13 @@ function parseGit(logArray)
 	return gitLogArray;
 }
 //end your code
+=======
+			alert('Hash: ' + hashString + ", date: " + dateString + ", message: " + messageString);
+		}
+	}
+
+	// return gitLogArray;
+	return 0;
+}
+//end your code
+>>>>>>> 71a21319fe61c028dd6919b4ac35a65f4f6cac24
