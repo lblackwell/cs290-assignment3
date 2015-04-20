@@ -46,7 +46,6 @@ var MessageLog = function MessageLog(user)
 	this.totalReceived = 0;
 }
 
-<<<<<<< HEAD
 MessageLog.prototype.logMessage = function (messageText, direction)
 {
 	this.loggedMessages[this.totalSent + this.totalReceived] = messageText;
@@ -74,36 +73,6 @@ MessageLog.prototype.totalSent = function ()
 MessageLog.prototype.totalReceived = function ()
 {
 	return this.totalReceived;
-}
-=======
-MessageLog.prototype.logMessage(messageText, direction)
-{
-	loggedMessages[totalSent + totalReceived] = messageText;
->>>>>>> 71a21319fe61c028dd6919b4ac35a65f4f6cac24
-
-	if(direction == 0)
-	{
-		totalSent++;
-	}
-	if(direction == 1)
-	{
-		totalReceived++;
-	}
-}
-
-MessageLog.prototype.getSentMessage(n)
-{
-	return loggedMessages[n];
-}
-
-MessageLog.prototype.totalSent()
-{
-	return totalSent;
-}
-
-MessageLog.prototype.totalReceived()
-{
-	return totalReceived;
 }
 //end your code
 
