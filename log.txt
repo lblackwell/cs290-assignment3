@@ -1,1 +1,17 @@
-You log goes in this  file.
+Start: Sun, 19 Apr 2015 10:36:52 -0800
+End: Sun, 19 Apr 2015 12:47:59 -0800
+Tasks: - Viewed assignment instructions
+       - Created work log
+       - Created repository
+       - Cloned cs290osu repository
+       - Completed uselessFunction
+       - Completed bar function
+       - Began working on parseGit function
+
+Start: Sun, 19 Apr 2015 18:06:09 -0800
+End: Sun, 19 Apr 2015 19:32:20 -0800
+Tasks: - Completed returnObjectLiteral function
+       - Encountered reference error and attempted to find a solution
+       - Started working on MessageLog object while waiting for feedback on error
+       - Tried clone of own code and fresh clone of cs290osu
+       - Found error, questioned life choices, went to take a shower
