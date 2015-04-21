@@ -15,3 +15,7 @@ Tasks: - Completed returnObjectLiteral function
        - Started working on MessageLog object while waiting for feedback on error
        - Tried clone of own code and fresh clone of cs290osu
        - Found error, questioned life choices, went to take a shower
+
+Start: Mon, 20 Apr 2015 13:18:06 -0800
+End: Mon, 20 Apr 2015 13:53:17 -0800
+Tasks: - Worked on debugging MessageLog
