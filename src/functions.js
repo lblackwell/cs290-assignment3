@@ -136,9 +136,3 @@ function parseGit(logArray)
 	return gitLogArray;
 }
 //end your code
-			alert('Hash: ' + hashString + ", date: " + dateString + ", message: " + messageString);
-		}
-	}
-
-}
-//end your code

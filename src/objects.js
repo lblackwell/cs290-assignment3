@@ -38,56 +38,58 @@ function returnObjectLiteral() {
 */
 
 //your code here
-var MessageLog = function MessageLog(user)
+function MessageLog(user)
 {
 	this.user = user;
 	this.sentMessages = new Array(5);
 	this.receivedMessages = new Array(5);
-	this.totalSent = 0;
-	this.totalReceived = 0;
-}
+	this.numSent = 0;
+	this.numReceived = 0;
 
-MessageLog.prototype.logMessage = function (messageText, direction)
-{
-	if(direction === 0)
+	this.logMessage = function (messageText, direction)
 	{
-		// Shift all sent messages forward by one
-		for(var i = this.sentMessages.length - 2; i > 0; i--)
+		if(direction === 0)
 		{
-			this.sentMessages[i] = this.sentMessages[i - 1];
-		}
+			// Shift all sent messages forward by one
+			for(var i = this.sentMessages.length - 1; i > 0; i--)
+			{
+				this.sentMessages[i] = this.sentMessages[i - 1];
+			}
 
-		this.sentMessages[0] = messageText;
-		this.totalSent++;
-	}
-	
-	if(direction === 1)
+			this.sentMessages[0] = messageText;
+			this.numSent++;
+		}
+		
+		if(direction === 1)
+		{
+			// Shift all sent messages forward by one
+			for(var j = this.receivedMessages.length - 1; j > 0; j--)
+			{
+				this.receivedMessages[j] = this.receivedMessages[j - 1];
+			}
+
+			this.receivedMessages[0] = messageText;
+			this.numReceived++;
+		}
+	};
+
+	this.getSentMessage = function (n)
 	{
-		// Shift all sent messages forward by one
-		for(var i = this.receivedMessages.length - 2; i > 0; i--)
-		{
-			this.receivedMessages[i] = this.receivedMessages[i - 1];
-		}
+		return this.sentMessages[n];
+	};
 
-		this.receivedMessages[0] = messageText;
-		this.totalReceived++;
-	}	
+	this.totalSent = function ()
+	{
+		return this.numSent;
+	};
+
+	this.totalReceived = function ()
+	{
+		return this.numReceived;
+	};
 }
 
-MessageLog.prototype.getSentMessage = function (n)
-{
-	return this.sentMessages[n];
-}
 
-MessageLog.prototype.totalSent = function ()
-{
-	return this.totalSent;
-}
-
-MessageLog.prototype.totalReceived = function ()
-{
-	return this.totalReceived;
-}
 //end your code
 
 /**
@@ -99,7 +101,7 @@ MessageLog.prototype.totalReceived = function ()
 MessageLog.prototype.lastReceivedMessage = function ()
 {
 	return this.receivedMessages[0];
-}
+};
 //end your code
 
 /**
@@ -109,5 +111,9 @@ MessageLog.prototype.lastReceivedMessage = function ()
 */
 
 //your code here
+var myLog = new MessageLog("BlackHatGuy");
 
+myLog.logMessage("foo", 1);
+myLog.logMessage("bar", 1);
+myLog.logMessage("baz", 1);
 //end your code

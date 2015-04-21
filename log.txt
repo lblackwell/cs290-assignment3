@@ -19,3 +19,9 @@ Tasks: - Completed returnObjectLiteral function
 Start: Mon, 20 Apr 2015 13:18:06 -0800
 End: Mon, 20 Apr 2015 13:53:17 -0800
 Tasks: - Worked on debugging MessageLog
+
+Start: Mon, 20 Apr 2015 18:25:01 -0800
+End: Mon, 20 Apr 2015 19:21:59 -0800
+Tasks: - Completed debugging MessageLog
+       - Attempted to find source of Objects: global failure
+       - Completed all variables problems
