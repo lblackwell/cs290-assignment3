@@ -25,3 +25,11 @@ End: Mon, 20 Apr 2015 19:21:59 -0800
 Tasks: - Completed debugging MessageLog
        - Attempted to find source of Objects: global failure
        - Completed all variables problems
+
+Start: Fri, 24 Apr 2015 08:51:26 -0800
+End: Fri, 24 Apr 2015 10:32:29 -0800
+Tasks: - Researched possible solutions to parseGit function
+       - Worked on solving parseGit function
+       - Finished all but date
+       - Posted question to Piazza
+       - Moved on to Part 2 while waiting for help

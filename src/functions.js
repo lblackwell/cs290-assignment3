@@ -47,7 +47,7 @@ bar = function(doubleArray)
 		}
 	}
 	return true;
-}
+};
 //end your code
 
 /**
@@ -87,50 +87,118 @@ function parseGit(logArray)
 {
 	var gitLogArray = new Array(50);
 
-	for(var i = 0; i < logArray.length; i++) // Access each commit message
+	for(var i = 0; i < logArray.length; i++) // Access each commit log
 	{
-		var hashString = "";
-		var dateString = "";
-		var messageString = "";
-		var hashDone = false;
-		var dateDone = false;
+		// Split the raw string by spaces
+		var splitLog = logArray[i].split(" ");
 
-		// Access each character in this commit message
-		for(var j = 0; j < logArray[i].length - 1; i++)
+		// Everything before first space is the hash
+		var hash = splitLog[0];
+
+		// Split time into hours, minutes, seconds
+		var splitTime = splitLog[5].split(":");
+
+		// Adjust hour
+		var adjustPlusMinus = splitLog[6].substr(0, 1);
+		var adjustBy = adjustPlusMinus + splitLog[6].substr(1, 2);
+		var adjustBy = parseInt(adjustBy);
+		alert("Orig hour: " + splitTime[0]);
+		splitTime[0] = parseInt(splitTime[0]) + adjustBy;
+		alert("New hour: " + splitTime[0]);
+
+		// Convert month to digits
+		if(splitLog[3] == "Jan")
 		{
-			// Add characters to hash until space is reached
-			if(hashDone == false && logArray[i].charAt(j) != " ")
-			{
-				hashString += logArray[i].charAt(j);
-			}
-
-			// First space is reached
-			if(hashDone == false && logArray[i].charAt(j) == " ")
-			{
-				hashDone = true;
-			}
-
-			// Add characters to date string until " reached
-			if(hashDone == true && dateDone == false && logArray[i].charAt(j) != "\"")
-			{
-				dateString += logArray[i].charAt(j);
-			}
-
-			// " reached
-			if(hashDone == true && dateDone == false && logArray[i].charAt(j) == "\"")
-			{
-				dateDone = true;
-			}
-
-			// Add all but the last character (") to message string
-			if(hashDone == true && dateDone == true)
-			{
-				messageString += logArray[i].charAt(j);
-			}
-
-			// Test print
-			// alert('Hash: ' + hashString + ", date: " + dateString + ", message: " + messageString);
+			splitLog[3] = 01;
 		}
+		else if(splitLog[3] == "Feb")
+		{
+			splitLog[3] = 02;
+		}
+		else if(splitLog[3] == "Mar")
+		{
+			splitLog[3] = 03;
+		}
+		else if(splitLog[3] == "Apr")
+		{
+			splitLog[3] = 04;
+		}
+		else if(splitLog[3] == "May")
+		{
+			splitLog[3] = 05;
+		}
+		else if(splitLog[3] == "Jun")
+		{
+			splitLog[3] = 06;
+		}
+		else if(splitLog[3] == "Jul")
+		{
+			splitLog[3] = 07;
+		}
+		else if(splitLog[3] == "Aug")
+		{
+			splitLog[3] = 08;
+		}
+		else if(splitLog[3] == "Sep")
+		{
+			splitLog[3] = 09;
+		}
+		else if(splitLog[3] == "Oct")
+		{
+			splitLog[3] = 10;
+		}
+		else if(splitLog[3] == "Nov")
+		{
+			splitLog[3] = 11;
+		}
+		else if(splitLog[3] == "Dec")
+		{
+			splitLog[3] = 12;
+		}
+		else
+		{
+			splitLog[3] = undefined;
+		}
+
+		// Create Date object with the next six pieces of the log
+		var date = new Date(splitLog[4], splitLog[3], splitLog[2], splitTime[0], splitTime[1], splitTime[2]);
+		/* alert("Year: " + splitLog[4]);
+		alert("Month: " + splitLog[3]);
+		alert("Day: " + splitLog[2]);
+		alert("Hour: " + splitTime[0]);
+		alert("Min: " + splitTime[1]);
+		alert("Sec: " + splitTime[2]); */
+
+		// Everything from the 8th item onward is the commit message
+		var message = "";
+		for(var j = 7; j < splitLog.length; j++)
+		{
+			// Remove quotation marks from first and last word
+			if(j === 7)
+			{
+				splitLog[j] = splitLog[j].substr(1);
+			}
+			if(j === splitLog.length - 1)
+			{
+				splitLog[j] = splitLog[j].substr(0, splitLog[j].length - 1);
+			}
+
+			// If this is the first word, don't add a space. Otherwise, do.
+			if(j === 7)
+			{
+				message = message + splitLog[j];
+			}
+			else
+			{
+				message = message + " " + splitLog[j];
+			}
+		}
+
+		// Combine all of this into a GitLog object
+		var thisLog = new GitLog(hash, date, message);
+
+		// Add object to array
+		gitLogArray[i] = thisLog;
 	}
 
 	return gitLogArray;
