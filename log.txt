@@ -33,3 +33,4 @@ Tasks: - Researched possible solutions to parseGit function
        - Finished all but date
        - Posted question to Piazza
        - Moved on to Part 2 while waiting for help
+       - Finished Part 1!

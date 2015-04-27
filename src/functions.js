@@ -95,79 +95,9 @@ function parseGit(logArray)
 		// Everything before first space is the hash
 		var hash = splitLog[0];
 
-		// Split time into hours, minutes, seconds
-		var splitTime = splitLog[5].split(":");
-
-		// Adjust hour
-		var adjustPlusMinus = splitLog[6].substr(0, 1);
-		var adjustBy = adjustPlusMinus + splitLog[6].substr(1, 2);
-		var adjustBy = parseInt(adjustBy);
-		alert("Orig hour: " + splitTime[0]);
-		splitTime[0] = parseInt(splitTime[0]) + adjustBy;
-		alert("New hour: " + splitTime[0]);
-
-		// Convert month to digits
-		if(splitLog[3] == "Jan")
-		{
-			splitLog[3] = 01;
-		}
-		else if(splitLog[3] == "Feb")
-		{
-			splitLog[3] = 02;
-		}
-		else if(splitLog[3] == "Mar")
-		{
-			splitLog[3] = 03;
-		}
-		else if(splitLog[3] == "Apr")
-		{
-			splitLog[3] = 04;
-		}
-		else if(splitLog[3] == "May")
-		{
-			splitLog[3] = 05;
-		}
-		else if(splitLog[3] == "Jun")
-		{
-			splitLog[3] = 06;
-		}
-		else if(splitLog[3] == "Jul")
-		{
-			splitLog[3] = 07;
-		}
-		else if(splitLog[3] == "Aug")
-		{
-			splitLog[3] = 08;
-		}
-		else if(splitLog[3] == "Sep")
-		{
-			splitLog[3] = 09;
-		}
-		else if(splitLog[3] == "Oct")
-		{
-			splitLog[3] = 10;
-		}
-		else if(splitLog[3] == "Nov")
-		{
-			splitLog[3] = 11;
-		}
-		else if(splitLog[3] == "Dec")
-		{
-			splitLog[3] = 12;
-		}
-		else
-		{
-			splitLog[3] = undefined;
-		}
-
 		// Create Date object with the next six pieces of the log
-		var date = new Date(splitLog[4], splitLog[3], splitLog[2], splitTime[0], splitTime[1], splitTime[2]);
-		/* alert("Year: " + splitLog[4]);
-		alert("Month: " + splitLog[3]);
-		alert("Day: " + splitLog[2]);
-		alert("Hour: " + splitTime[0]);
-		alert("Min: " + splitTime[1]);
-		alert("Sec: " + splitTime[2]); */
+		var dateString = splitLog[1] + " " + splitLog[2] + " " + splitLog[3] + " " + splitLog[4] + " " + splitLog[5] + " " + splitLog[6];
+		var date = new Date(dateString);
 
 		// Everything from the 8th item onward is the commit message
 		var message = "";
